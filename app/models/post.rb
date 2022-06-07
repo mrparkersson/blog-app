@@ -1,4 +1,4 @@
-class Post < ApplicationRecord
+class Post < ApplicationRecord::Migration.remove_column :Post, :user_id
   belongs_to :author, class_name: 'User'
   has_many :comments
   has_many :likes
@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   private
 
   def update_posts_counter
-    author.increment!(:PostsCounter)
+    author.increment!(:posts_counter)
   end
 
   def return_five_most_recent_comments
