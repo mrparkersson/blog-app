@@ -3,7 +3,7 @@
 		<div class="user-container border">
 			<div class="user">
 				<div class="user-img">
-					<%= image_tag("logout.png")%>
+					<%= image_tag("alex.jpeg")%>
 				</div>
 				<div class="user-text border">
 					<h2 class="user-heading"><%= @user.name %></h2>
@@ -15,7 +15,7 @@
 			<p>Bio</p>
 			<p><%= @user.bio %></p>
 		</div>
-		<% @user.most_recent_post.each do |post| %>
+		<% @user.most_recent_post do |post| %>
 			<div class="post-list border">
 				<div>
 						<h3><%= link_to post.Title, user_post_path(@user.id, post.id)%></h3>
