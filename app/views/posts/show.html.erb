@@ -1,3 +1,38 @@
-<h1>Here is a page for showing a post in detail and its comments</h1>
+<div class="main-container">
+  <div class="border">
+	  <div class="title">
+	    <p><b><%= @post.Title%></b> by <b><%= @post.author.Name%></b></p>
+		  <small class="post-comments-likes">Comments: <%= @post.CommentsCounter || 0%>, Likes: <%=@post.LikesCounter || 0%></small>
+		</div>
+		<hr>
+	  <p class="comment-text"><%=@post.Text%></p>
+		<hr>
 
-<p>This page is under construction</p>
+		<section class="like">
+		  <p class="like-btn-container">
+			  <%= form_with model: @like , url:"#{@post.id}/likes" do |f| %>
+				  <%= f.submit "Like", class: "like-btn" %>
+				<% end %>
+			</p>
+		</section>
+
+		<div class="comments">
+		  <% @post.comments.each do |comment| %>
+			  <p><%=comment.author.Name%> :  <%=comment.Text%></p>
+				<% if can? :destroy, @comment %>
+		      <%= button_to "Delete comment", "/users/#{@post.author_id}/posts/#{@post.id}/comments/#{comment.id}" , method: :delete %>
+				<%end%>
+			<%end%>
+			<div>
+			<%= form_with model: @comment, url: user_post_comments_path(post_id: @post.id), class: "comment-form" do |form| %>
+          <%= form.text_field :text , placeholder: "Add comment" %> <br>
+          <%= form.submit "Submit", class: "btn" %>
+     <% end %>
+	</div>
+	</div>
+</div>
+<% if can? :destroy, @post %>
+  <div class="delete-container">
+	  <%= button_to "Delete post", user_post_path(@post.author_id, @post.id), method: :delete %>
+  </div>
+<%end%>
