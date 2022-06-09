@@ -1,3 +1,13 @@
-<h1>Here is a page for showing list of users</h1>
-
-<p>This page is under construction</p>
+<% @users.each do |user| %>
+  <div class="user_con">
+    <div class="user_img">
+      <%= image_tag("image5.jpg", width:'150px', height:'200px') %>
+    </div>
+    <div class="user_data">
+      <%= link_to user_path(user.id) do %>
+      <h2><%= user.name%></h2>
+      <% end %>
+      <p>Number of posts: <%= user.posts_counter %></p>
+    </div>
+  </div>
+<%end%>
