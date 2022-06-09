@@ -1,0 +1,179 @@
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+nav {
+  padding: 20px;
+}
+
+.content {
+  text-align: center;
+  margin: 30px auto 5px auto;
+}
+
+.user-details {
+  margin: 60px auto 5px auto;
+  width: 80%;
+}
+
+.users-container {
+  padding: 20px;
+  margin: 10px;
+  font-family: sans-serif;
+}
+
+.user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.user-img img {
+  width: 80px;
+  height: 80px;
+}
+
+.user-text {
+  width: 80%;
+  height: 80px;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.user-heading {
+  font-size: 2.2rem;
+  font-weight: 300;
+  padding: 0 15px;
+  color: black;
+}
+
+.border {
+  border: 1px solid black;
+  margin: 5px;
+  padding: 0 10px;
+}
+
+.post-text {
+  text-align: center;
+}
+
+.post-commwnts-likes {
+  float: right;
+  position: relative;
+  bottom: 15px;
+}
+
+hr {
+  width: 90%;
+  margin: 5px auto;
+  border: none;
+  border-top: 1px solid black;
+}
+
+.comments-container {
+  margin: 15px;
+}
+
+.button-container {
+  margin: 20px auto;
+  width: 120px;
+  height: 80px;
+}
+
+.button {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.post-comments-likes {
+  margin: 0;
+  padding: 0;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment-text {
+  margin: 10px auto;
+  text-align: center;
+}
+
+.new {
+  text-align: center;
+  margin: 15px auto;
+}
+
+.new-link {
+  color: darkslategrey;
+  border: 1px solid grey;
+  text-decoration: none;
+  width: 200px;
+  padding: 5px;
+  margin: 15px auto;
+  background-color: antiquewhite;
+}
+
+.form {
+  width: 60%;
+  margin: 10px auto;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.input {
+  margin: 0 auto 15px auto;
+  padding: 5px;
+}
+
+.input-area {
+  min-height: 100px;
+}
+
+.submit-btn {
+  width: 200px;
+  margin: 5px;
+  padding: 5px;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+}
+
+.comment-form .submit-btn {
+  width: 120px;
+}
+
+.nav-btn-container {
+  width: 200px;
+}
+
+.nav-btn {
+  width: 80px;
+}
+
+.sign-up-in-container {
+  width: 320px;
+  height: auto;
+  margin: 10px auto;
+  padding: 40px;
+}
+
+.form-control {
+  margin-top: 10px;
+}

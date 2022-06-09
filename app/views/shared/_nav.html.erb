@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <%= link_to "Blog", root_path, class: "nav-link" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          <%= link_to "Home", root_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+      </ul>
+      <% if signed_in? %>
+        <div class="d-flex flex-column flex-lg-row nav-btn-container">
+				  <%= link_to "#{current_user.Name}", user_posts_path(current_user), class:"btn btn-secondary nav-btn" %>
+        </div>
+      <% else %>
+        <div class="d-flex flex-column flex-lg-row nav-btn-container">
+				  <%= link_to "Login", new_user_session_path, class:"btn btn-secondary nav-btn" %>
+				&nbsp;
+				  <%= link_to "Sign up", new_user_registration_path, class: "btn btn-secondary nav-btn" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</nav>
