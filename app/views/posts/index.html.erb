@@ -4,7 +4,7 @@
 
       <h2><%= @user.name%></h2>
 
-      <p>Number of posts: <%= @user.posts_counter %></p>
+      <p>Number of posts: <%= @user.postcounter %></p>
 
     </div>
 
@@ -31,7 +31,7 @@
 
   <div class="comments">
 
-    <% post.recent_5_comments.each do |comment| %>
+    <% post.return_five_most_recent_comments do |comment| %>
 
        <h2><%= comment.user.name%>: <%= comment.text%></h2>
     <%end%>

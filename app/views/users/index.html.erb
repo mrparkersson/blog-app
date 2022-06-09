@@ -1,13 +1,13 @@
 <% @users.each do |user| %>
   <div class="user_con">
     <div class="user_img">
-      <%= image_tag("image5.jpg", width:'150px', height:'200px') %>
+      <%= image_tag("pokemon.webp", width:'150px', height:'200px') %>
     </div>
     <div class="user_data">
       <%= link_to user_path(user.id) do %>
       <h2><%= user.name%></h2>
       <% end %>
-      <p>Number of posts: <%= user.posts_counter %></p>
+      <p>Number of posts: <%= user.postcounter %></p>
     </div>
   </div>
 <%end%>
