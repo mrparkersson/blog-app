@@ -1,38 +1,19 @@
-<div class="main-container">
-  <div class="border">
-	  <div class="title">
-	    <p><b><%= @post.title%></b> by <b><%= @post.user_id%></b></p>
-		  <small class="post-comments-likes">Comments: <%= @post.commentscounter || 0%>, Likes: <%=@post.likescounter || 0%></small>
-		</div>
-		<hr>
-	  <p class="comment-text"><%=@post.text%></p>
-		<hr>
 
-		<section class="like">
-		  <p class="like-btn-container">
-			  <%= form_with model: @like , url:"#{@post.id}/likes" do |f| %>
-				  <%= f.submit "Like", class: "like-btn" %>
-				<% end %>
-			</p>
-		</section>
-
-		<div class="comments">
-		  <% @post.comments.each do |comment| %>
-			  <p><%=comment.user_id%> :  <%=comment.text%></p>
-				<% if can? :destroy, @comment %>
-		      <%= button_to "Delete comment", "/users/#{@post.author_id}/posts/#{@post.id}/comments/#{comment.id}" , method: :delete %>
-				<%end%>
-			<%end%>
-			<div>
-			<%= form_with model: @comment, url: user_post_comments_path(post_id: @post.id), class: "comment-form" do |form| %>
-          <%= form.text_field :text , placeholder: "Add comment" %> <br>
-          <%= form.submit "Submit", class: "btn" %>
-     <% end %>
-	</div>
-	</div>
+<div class="user_con">
+<div class="user_data_post"> 
+  <h2><%= @post.title %> by <span><%= @post.user.name %></span></h2>
+  <%= form_with url: "/posts/#{@post.id}/likes", scope: :like do |form| %>
+    <%= form.submit "Like this post", class: "post-like-btns"%>
+  <% end %>
+  <h3>Comment <%= @post.comments_counter%>,  <span>Likes <%= @post.likes_counter%></span></h3>
 </div>
-<% if can? :destroy, @post %>
-  <div class="delete-container">
-	  <%= button_to "Delete post", user_post_path(@post.author_id, @post.id), method: :delete %>
-  </div>
+</div>
+<div>
+<div class="comments">
+<% @comments.each do |comment| %>
+   <h2><%= comment.user.name%>: <%= comment.text%></h2>
 <%end%>
+<%= render partial: "creation_of_comments", local: { post: @post } %>
+</div>
+</div>
+
