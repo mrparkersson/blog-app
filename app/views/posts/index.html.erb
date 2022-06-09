@@ -1,3 +1,42 @@
-<h1>Here is a page for showing list for post for a given user </h1>
-
-<p>This page is under construction</p>
+<div class="main-container">
+  <div class="user-details">
+	  <div class="user-container">
+		  <section class="user">
+			  <div class="user-img">
+		      <%= image_tag("pokemon.webp")%>
+		    </div>
+				<div class="user-text border">
+			    <h2 class="user-heading"><%= @user.name %></h2>
+			    <p class="user-posts">Number of posts: <%= @user.posts_counter || 0%></p>
+		    </div>
+			</section>
+		</div>
+		<section class="new">
+		  <h6><%= link_to 'Create a new post',user_posts_path, method: :get, class:"new-link"%></h6>
+		</section>
+		<section>
+		  <% @posts.each do |p| %>
+				<div class="border">
+					<p><b><%= link_to p.title, "/users/#{@user.id}/posts/#{p.id}"%></b></p>
+					<div>
+					  <p class="post-text"><%=p.text.length < 100 ? p.text.html_safe: truncate(p.text.html_safe, length: 100, omission: '...') %></p>
+					</div>
+					<small class="post-commwnts-likes">Comments: <%= p.commentscounter || 0%>, Likes: <%=p.likescounter || 0%></small>
+					<hr/>
+					<div class="comments-container">
+					  <% if p.comments.blank?%>
+				 	    <p>No comments yet....</p>
+						<%else%>
+						  <%p.return_five_most_recent_comments.each do |comment| %>
+						    <div class="comments-container">
+							    <%=comment.user_id%> : <%=comment.text%>
+						    </div>
+					    <% end %>
+					  <%end%>
+					</div>
+				</div>
+		  <% end %>
+		</section>
+	
+	</div>
+</div>

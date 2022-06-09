@@ -1,3 +1,11 @@
-<h1>Here is a page for showing list of users</h1>
-
-<p>This page is under construction</p>
+<div class="main-container">
+	<div class="users-container content">
+		<% if @users.blank? %>
+		  <p>There are no users</p>
+		<% else %>
+		  <% @users.each do |user| %>
+			  <%= render partial: "user", locals: {user: user} %>
+		  <% end %>
+		<% end %>
+	</div>
+</div>
