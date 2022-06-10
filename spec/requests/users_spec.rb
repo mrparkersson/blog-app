@@ -2,18 +2,32 @@ require 'rails_helper'
 
 RSpec.describe 'Users', type: :request do
   describe 'GET /index' do
-    it 'returns http success' do
-      get '/users/'
-      expect(response).to have_http_status(:success)
-      expect(response).to render_template(:index)
-      expect(response.body).to include('Here is a page for showing list of users')
+    before(:example) { get '/users' }
+    it 'responds with code 200' do
+      expect(response).to have_http_status(:ok)
     end
 
-    it 'return show page' do
-      get '/users/show'
-      expect(response).to have_http_status(:success)
+    it 'renders users list view' do
+      expect(response).to render_template(:index)
+    end
+
+    it 'shows correct content in the view' do
+      expect(response.body).to include('List of users')
+    end
+  end
+
+  describe 'GET /show' do
+    before(:example) { get '/users/1' }
+    it 'responds with code 200' do
+      expect(response).to have_http_status(:ok)
+    end
+
+    it 'renders users list view' do
       expect(response).to render_template(:show)
-      expect(response.body).to include('Here is a page for showing user details')
+    end
+
+    it 'shows correct content in the view' do
+      expect(response.body).to include('User Details')
     end
   end
 end
