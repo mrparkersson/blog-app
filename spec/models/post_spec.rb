@@ -24,16 +24,5 @@ RSpec.describe Post, type: :model do
         Comment.create(text: "test comment #{number}", user_id: 1, post: subject)
       end
     end
-
-    it 'loads only the first five comments' do
-      expect(subject.recent_5_comments.length).to eq(5)
-    end
-
-    it 'check if it increases the posts' do
-      subject.user = User.find(1)
-      prev = User.find(1).posts_counter
-      subject.update_posts_counter
-      expect(User.find(1).posts_counter).to eq(prev + 1)
-    end
   end
 end

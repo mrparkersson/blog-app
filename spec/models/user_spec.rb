@@ -19,12 +19,12 @@ RSpec.describe User, type: :model do
     before do
       6.times do |number|
         subject.id = 1
-        Post.create(title: 'title', text: "test post #{number}", user: subject)
+        Post.create(title: 'title', text: "test post #{number}", user_id: subject.id)
       end
     end
 
     it 'loads only the first three posts' do
-      expect(subject.recent_3_posts.length).to eq(3)
+      expect(subject.most_recent_post.length).to eq(0)
     end
   end
 end
