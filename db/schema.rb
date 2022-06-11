@@ -36,19 +36,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_03_135754) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "text"
-    t.integer "commentscounter"
-    t.integer "likescounter"
+    t.integer "comments_counter", default: 0
+    t.integer "likes_counter", default: 0
     t.bigint "user_id", null: false
+    t.bigint "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_posts_on_author_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "photo"
+    t.string "photo", default: "https://unsplash.com/photos/F_-0BxGuVvo"
     t.string "bio"
-    t.integer "postcounter"
+    t.integer "posts_counter", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -58,4 +60,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_03_135754) do
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "posts", "users", column: "author_id"
 end
