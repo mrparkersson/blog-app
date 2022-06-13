@@ -1,52 +1,32 @@
-<div class="user_con">
-
-    <div class="user_data">
-
-      <h2><%= @user.name%></h2>
-
-      <p>Posts of a given user: <%= @user.posts_counter %></p>
-
+<section class="posts-section">
+  <% if @user %>
+    <div class="user-card">
+      <img class="user-card-photo" src="<%= @user.photo %>"> 
+      <div class="user-card-header bordered-box">
+        <h2 class="user-card-username" ><%= @user.name %> </h2>
+        <div class="user-card-postnumber">Number of Posts : <%= @user.posts.length %> </div>
+      </div>
     </div>
+    <ul class="mt-3">
+    <% @user.posts.each do |post| %>
+      <li class="mb-1"> 
+        <div class="bordered-box">
+          <a href="<%= users_path + "/" + @user.id.to_s + "/posts/" + post.id.to_s %>" >
+            <h2><%= post.title %></h2>
+            <p><%= post.text %></p>
 
-  </div>
+            <div class="post-info">Comments: <%= post.comments.length %>, Likes: <%= post.likes.length %></div>
+          </a>
+          <%= render partial: "posts/like", locals: { url: "/users/#{@user.id}/posts/#{post.id}/like", post: post } %>
+        </div>
+        <% if post.comments.length != 0 %>
+          <div class="bordered-box">
+        <% end %>
+    <% end %>
+       </li>
 
-
-
-
-<% @posts.each do |post| %>
-
-  <div class="user_con">
-
-    <div class="user_data_post">
-
-     <%= link_to "#{post.title}", user_post_path(@user.id, post.id), class:"anything" %> 
-
-      <h3><%= post.text%></h3>
-
-      <p>Number of comments: <%= post.comments_counter %> <span>Number of likes: <%= post.likes_counter %></span></p>
-
-    </div>
-
-  </div>
-
-  <div class="comments">
-
-    <% post.return_five_most_recent_comments do |comment| %>
-
-       <h2><%= comment.user.name%>: <%= comment.text%></h2>
-    <%end%>
-  </div>
-<%end%>
-
-
-
-
-<div class="button-wrapper">
-
-  <button class="button">
-
-      Pagination
-
-  </button>
-
-</div>
+    </ul>
+  <% else %>
+    <h2> Not Found</h2>
+  <% end %>
+</section> 

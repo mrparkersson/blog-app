@@ -1,19 +1,33 @@
-
-<div class="user_con">
-<div class="user_data_post"> 
-  <h2><%= @post.title %> by <span><%= @post.user.name %></span></h2>
-  <%= form_with url: "/posts/#{@post.id}/likes", scope: :like do |form| %>
-    <%= form.submit "Like this post", class: "post-like-btns"%>
+<section class="posts-section">
+  <% if @user %>
+    <% if @post %>
+      <div class="bordered-box">
+        <div>
+          <h2><%= @post.title %> by <%= @post.author.name %></h2>
+          <div class="post-info">Comments: <%= @post.comments.length %>, Likes: <%= @post.likes.length %></div>
+          <%= render partial: "posts/like", locals: { url: "/users/#{@user.id}/posts/#{@post.id}/like", post: @post } %>
+        </div>
+        <p>
+        <%= @post.text %>
+        </p>
+      </div>
+      <%= render partial: "posts/add_comment" %>
+      <% if @post.comments.length != 0 %>
+        <ul class="bordered-box">
+          <% @post.recent_comments.each do |comment| %>
+            <li>
+            <span><%= comment.author.name %> : </span>
+            <span> <%= comment.text %> </span>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <h2>No comments added </h2>
+      <% end %>
+    <% else %>
+      <h2>Not founded</h2>
+    <% end %>
+  <% else %>
+    <h1>Not founded</h1>
   <% end %>
-  <h3>Comment <%= @post.comments_counter%>,  <span>Likes <%= @post.likes_counter%></span></h3>
-</div>
-</div>
-<div>
-<div class="comments">
-<% @comments.each do |comment| %>
-   <h2><%= comment.user.name%>: <%= comment.text%></h2>
-<%end%>
-<%= render partial: "creation_of_comments", local: { post: @post } %>
-</div>
-</div>
-
+</section>

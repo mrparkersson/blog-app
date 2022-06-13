@@ -1,13 +1,13 @@
-<% @users.each do |user| %>
-  <div class="user_con">
-    <div class="user_img">
-      <%= image_tag("pokemon.webp", width:'150px', height:'200px') %>
+<section class="users-container">
+<% @all_users.each do |user| %>
+    <div class="user-card">
+      <a href="<%= users_path + '/' + user.id.to_s %>" class="user-link">
+        <img class="user-card-photo" src="<%= user.photo %>"> 
+      <div class="user-card-header bordered-box">
+        <h2 class="user-card-username" ><%= user.name %> </h2>
+      </a>
+        <div class="user-card-postnumber">Number of Posts : <%= user.posts.length %> </div>
+      </div>
     </div>
-    <div class="user_data">
-      <%= link_to user_path(user.id) do %>
-      <h2><%= user.name%></h2>
-      <% end %>
-      <p>List of users: <%= user.posts_counter %></p>
-    </div>
-  </div>
-<%end%>
+<% end %>
+</section> 

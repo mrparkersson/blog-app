@@ -1,13 +1,12 @@
-class PostsController < ActionController::Base
+class PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
-    @posts = @user.posts.includes(:comments)
   end
 
   def show
-    @post = Post.find(params[:id])
-    @user = @post.user
-    @comments = @post.comments
+    @user = User.where(id: params[:user_id])[0]
+    @post = @user.posts.where(id: params[:id])[0]
+    @posts = Post.where(author_id: params[:user_id])
   end
 
   def new
@@ -15,17 +14,13 @@ class PostsController < ActionController::Base
   end
 
   def create
-    new_post = current_user.posts.new(post_params)
-    new_post.likes_counter = 0
-    new_post.comments_counter = 0
-    new_post.update_posts_counter
+    @post = current_user.posts.new(post_params)
+
     respond_to do |format|
-      format.html do
-        if new_post.save
-          redirect_to "/users/#{new_post.user.id}/posts/", notice: 'Success!'
-        else
-          render :new, alert: 'Error occured!'
-        end
+      if @post.save
+        format.html { redirect_to @post }
+      else
+        format.html { render :new }
       end
     end
   end
@@ -33,9 +28,6 @@ class PostsController < ActionController::Base
   private
 
   def post_params
-    params.require(:data).permit(:title, :text)
-    post_hash = params.require(:post).permit(:title, :text)
-    post_hash[:author] = current_user
-    post_hash
+    params.require(:post).permit(:author_id, :title, :text)
   end
 end
