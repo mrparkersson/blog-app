@@ -36,8 +36,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_03_135754) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "text"
-    t.integer "comments_counter", default: 0
-    t.integer "likes_counter", default: 0
+    t.integer "comments_counter"
+    t.integer "likes_counter"
     t.bigint "user_id", null: false
     t.bigint "author_id"
     t.datetime "created_at", null: false
@@ -48,9 +48,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_03_135754) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "photo", default: "https://unsplash.com/photos/F_-0BxGuVvo"
+    t.string "photo"
     t.string "bio"
-    t.integer "posts_counter", default: 0
+    t.integer "posts_counter"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
