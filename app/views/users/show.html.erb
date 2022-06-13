@@ -22,7 +22,7 @@
         </a>
         <%= render partial: 'posts/like', locals: { url: "/users/#{@user.id}/posts/#{post.id}/like", post: post } %>
       </li>
-
+    
   <% end %>
   </ul>
   <% if @user == current_user %>

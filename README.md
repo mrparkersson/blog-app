@@ -1,6 +1,6 @@
-# BLOGAPP
+# BLOG-APP
 
-> BLOGAPP is a web application that allows you to create, edit delete and show blogs built with ruby on rails
+> BLOG-APP is a web application that allows you to create, edit delete and show blogs built with ruby on rails
 
 Additional description about the project and its features.
 
@@ -15,7 +15,7 @@ Additional description about the project and its features.
 
 ## How to Setup
 
-> You can simply clone or download [this repository](https://github.com/nevisende/blogapp.git), and use your favorite browser or code editor to run this program.
+> You can simply clone or download [this repository](https://github.com/nevisende/blog-app.git), and use your favorite browser or code editor to run this program.
 - To open this project using vs code ( for this example) or your favorite code editor, you can follow the guide below:
   ##### in your cmd or command line navigate to where this project is located, then;
 ```bash
@@ -32,7 +32,7 @@ code .
 - To run the application through terminal, make sure ruby and rails is installed in your computer then follow the guide below:
   ##### in your cmd or command line navigate to where this project is located, then;
 ```cmd
-cd blogapp
+cd blog_app
 ```
 
 ## Install Gems
