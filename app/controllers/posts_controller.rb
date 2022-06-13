@@ -34,5 +34,8 @@ class PostsController < ActionController::Base
 
   def post_params
     params.require(:data).permit(:title, :text)
+    post_hash = params.require(:post).permit(:title, :text)
+    post_hash[:author] = current_user
+    post_hash
   end
 end

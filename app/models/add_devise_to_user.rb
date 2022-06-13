@@ -1,0 +1,2 @@
+class AddDeviseToUser < ApplicationRecord
+end
