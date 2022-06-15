@@ -4,15 +4,13 @@
 
       <h2><%= @user.name%></h2>
 
-      <p>Posts of a given user: <%= @user.posts_counter %></p>
+      <p>Number of posts: <%= @user.posts_counter %></p>
 
     </div>
 
   </div>
 
-
-
-
+<%= link_to "New post", new_post_path %>
 <% @posts.each do |post| %>
 
   <div class="user_con">
@@ -31,9 +29,9 @@
 
   <div class="comments">
 
-    <% post.return_five_most_recent_comments do |comment| %>
+    <% post.recent_5_comments.each do |comment| %>
 
-       <h2><%= comment.user.name%>: <%= comment.text%></h2>
+       <h2><%= comment.author.name%>: <%= comment.text%></h2>
     <%end%>
   </div>
 <%end%>

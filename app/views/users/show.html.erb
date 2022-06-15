@@ -1,7 +1,6 @@
-
 <div class="user_con">
   <div class="user_img">
-    <%= image_tag("pokemon.webp", width:'150px', height:'200px') %>
+    <%= image_tag("image5.jpg", width:'150px', height:'200px') %>
   </div>
   <div class="user_data">
     <h2><%= @user.name%></h2>
@@ -15,8 +14,10 @@
     <p class="bio"><%= @user.bio%></p>
   </div>
 </div>
-
-<% @user.most_recent_post do |post| %>
+<div>
+  <%= link_to "New post", new_post_path(current_user) %>
+</div>
+<% @user.recent_post do |post| %>
   <div class="comment_con">
       <h2><%= post.title%></h2>
       <p><%= post.text%></p>
