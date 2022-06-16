@@ -72,7 +72,7 @@ group :test do
 end
 
 gem 'cancancan'
+gem 'capybara'
 gem 'devise'
 gem 'rails-controller-testing'
-gem 'capybara'
 gem 'rspec-rails'

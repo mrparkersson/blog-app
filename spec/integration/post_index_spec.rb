@@ -15,10 +15,10 @@ RSpec.describe 'Posts index page', type: :feature do
     fill_in 'Password', with: '123456'
     click_button 'Log in'
 
-    @post1 = @user1.posts.create!(title: 'test_1', text: 'Test cases 1',comments_counter: 0, likes_counter: 0)
-    @post2 = @user1.posts.create!(title: 'test_2', text: 'Test cases 2',comments_counter: 0, likes_counter: 0)
-    @post3 = @user1.posts.create!(title: 'test_3', text: 'Test cases 3',comments_counter: 0, likes_counter: 0)
-    @post4 = @user1.posts.create!(title: 'test_4', text: 'Test cases 4',comments_counter: 0, likes_counter: 0)
+    @post1 = @user1.posts.create!(title: 'test_1', text: 'Test cases 1', comments_counter: 0, likes_counter: 0)
+    @post2 = @user1.posts.create!(title: 'test_2', text: 'Test cases 2', comments_counter: 0, likes_counter: 0)
+    @post3 = @user1.posts.create!(title: 'test_3', text: 'Test cases 3', comments_counter: 0, likes_counter: 0)
+    @post4 = @user1.posts.create!(title: 'test_4', text: 'Test cases 4', comments_counter: 0, likes_counter: 0)
 
     @post1.comments.create!(user_id: @user1.user_id, text: 'comment 1 from user 1')
     @post1.comments.create!(user_id: @user1.user_id, text: 'comment 2 from user 1')
