@@ -76,3 +76,6 @@ end
 gem 'cancancan'
 gem 'devise'
 gem 'rails-controller-testing'
+
+gem 'bcrypt', '~> 3.1.7'
+gem 'jwt'
