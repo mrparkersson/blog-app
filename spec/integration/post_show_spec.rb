@@ -24,9 +24,9 @@ RSpec.describe 'Posts show page', type: :feature do
     @post4 = @user1.posts.create!(title: 'test_4', text: 'Test cases 4', comments_counter: 0, likes_counter: 0,
                                   user_id: @user1.id)
 
-    @post1.comments.create!( text: 'comment 1 from user 1',author: @user1)
+    @post1.comments.create!(text: 'comment 1 from user 1', author: @user1)
     @post1.comments.create!(text: 'comment 2 from user 1', author: @user2)
-    @post1.comments.create!( text: 'comment 3 from user 2', author: @user2)
+    @post1.comments.create!(text: 'comment 3 from user 2', author: @user2)
     @post1.comments.create!(text: 'comment 4 from user 2', author: @user2)
 
     @post1.likes.create!(user_id: @user2)
