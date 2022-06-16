@@ -10,6 +10,10 @@ class User < ApplicationRecord
     Post.order('created_at DESC').where(author_id: id).limit(3)
   end
 
+  def authenticate(password)
+    valid_password?(password)
+end
+
   def admin?
     role == 'admin'
   end
