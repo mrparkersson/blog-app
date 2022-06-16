@@ -6,7 +6,7 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   after_save :update_post_counter
 
-  def update_posts_counter
+  def update_post_counter
     author.increment!(:posts_counter)
   end
 
