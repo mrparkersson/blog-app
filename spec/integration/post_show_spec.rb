@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe 'Posts show page', type: :feature do
   before :each do
-    @user1 = User.create!(email: 'furkan@gmail.com', password: '123456',id:1,
+    @user1 = User.create!(email: 'furkan@gmail.com', password: '123456',
                           name: 'furkan', bio: 'furkan\'s bio...',
                           photo: 'https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')
 
-    @user2 = User.create!(email: 'parker@gmail.com', password: 'abcdef',id:2,
+    @user2 = User.create!(email: 'parker@gmail.com', password: 'abcdef',
                           name: 'parker', bio: 'parker\'s bio...',
                           photo: 'https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')
 
@@ -16,18 +16,18 @@ RSpec.describe 'Posts show page', type: :feature do
     click_button 'Log in'
 
     @post1 = @user1.posts.create!(title: 'test_1', text: 'Test cases 1', comments_counter: 0, likes_counter: 0,
-                                  user_id: @user.id)
+                                  user_id: @user1.id)
     @post2 = @user1.posts.create!(title: 'test_2', text: 'Test cases 2', comments_counter: 0, likes_counter: 0,
-                                  user_id: @user.id)
+                                  user_id: @user1.id)
     @post3 = @user1.posts.create!(title: 'test_3', text: 'Test cases 3', comments_counter: 0, likes_counter: 0,
-                                  user_id: @user.id)
+                                  user_id: @user1.id)
     @post4 = @user1.posts.create!(title: 'test_4', text: 'Test cases 4', comments_counter: 0, likes_counter: 0,
-                                  user_id: @user.id)
+                                  user_id: @user1.id)
 
-    @post1.comments.create!(user_id: @user1.id, text: 'comment 1 from user 1', author: @user2)
-    @post1.comments.create!(user_id: @user1.id, text: 'comment 2 from user 1', author: @user2)
-    @post1.comments.create!(user_id: @user2.id, text: 'comment 3 from user 2', author: @user2)
-    @post1.comments.create!(user_id: @user2.id, text: 'comment 4 from user 2', author: @user2)
+    @post1.comments.create!( text: 'comment 1 from user 1',author: @user1)
+    @post1.comments.create!(text: 'comment 2 from user 1', author: @user2)
+    @post1.comments.create!( text: 'comment 3 from user 2', author: @user2)
+    @post1.comments.create!(text: 'comment 4 from user 2', author: @user2)
 
     @post1.likes.create!(user_id: @user2)
     @post1.likes.create!(user_id: @user1)
