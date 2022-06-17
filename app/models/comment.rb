@@ -1,9 +1,9 @@
 class Comment < ApplicationRecord
   belongs_to :post
-  belongs_to :author, class_name: 'User'
+  belongs_to :author_id, class_name: 'User', optional: true
 
   def change
-    rename_column :Comment, :user_id, :author_id
+    rename_column :Comment, :user_id
   end
 
   private
