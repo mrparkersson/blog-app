@@ -8,7 +8,7 @@ class PostsController < ActionController::Base
 
   def show
     @post = Post.find(params[:id])
-    @user = @post.user
+    @user = @post.user_id
     @comments = @post.comments
   end
 
