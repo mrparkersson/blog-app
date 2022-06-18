@@ -24,13 +24,13 @@ RSpec.describe 'Posts index page', type: :feature do
     @post4 = @user1.posts.create!(user_id: @user2.id, title: 'test_4', text: 'Test cases 4', comments_counter: 0,
                                   likes_counter: 0)
 
-    @post1.comments.create!(user_id: @user1.id, text: 'comment 1 from user 1', post_id: @post1.id)
+    @post1.comments.create!(user_id: @user1.id, text: 'comment 1 from user 1')
     @post1.comments.create!(user_id: @user1.id, text: 'comment 2 from user 1')
     @post1.comments.create!(user_id: @user2.id, text: 'comment 3 from user 2')
     @post1.comments.create!(user_id: @user2.id, text: 'comment 4 from user 2')
 
-    @post1.likes.create!(user_id: @user2)
-    @post1.likes.create!(user_id: @user1)
+    # @post1.likes.create!(user_id: @user2)
+    # @post1.likes.create!(user_id: @user1)
 
     visit user_posts_path(@user1)
   end
