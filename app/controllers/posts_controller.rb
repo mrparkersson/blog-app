@@ -1,4 +1,4 @@
-class PostsController < ActionController::Base
+class PostsController < ApplicationController
   load_and_authorize_resource
 
   def index
@@ -38,6 +38,15 @@ class PostsController < ActionController::Base
     @author.posts_counter -= 1
     @post.destroy!
     redirect_to user_posts_path(id: @author.id), notice: 'Post was deleted successfully!'
+  end
+
+  def posts
+    @user = User.find(params[:user_id])
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @user }
+    end
   end
 
   private
